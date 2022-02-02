@@ -48,12 +48,11 @@ function carritoHTML(){
     limpiarHTML();  
     // recorre el carrito y genera el html
     articulosCarrito.forEach( curso => {
+        // se agrego este const para que dessde la linea 55 se pierda el curso
         const {imagen,titulo,precio,cantidad,id} = curso;
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>
-                <img src="${imagen}" width ="150">
-            </td>
+            <td> <img src="${imagen}" width ="150"></td>
             <td>${titulo}</td>
             <td>${precio}</td>
             <td>${cantidad}</td>
