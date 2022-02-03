@@ -35,8 +35,28 @@ function leerDatosCurso(curso){
         id: curso.querySelector('a').getAttribute('data-id'),
         cantidad: 1
     }
+
+    // revisa si un elemento ya existe en el carrito
+    // .some nos permite iterar sobre un arreglo de objetos y ver si unn elemento existe en el objeto
+    const existe  = articulosCarrito.some(curso => curso.id === infoCurso.id);
+    if(existe){
+        // actualizamos la cantidad
+        const cursos = articulosCarrito.map( curso =>{
+            if ( curso.id === infoCurso.id){
+                curso.cantidad++;
+                return curso;
+            }else{
+                return curso;
+            }
+        });
+        articulosCarrito = [...cursos];
+    }else{
+        // agrega elementos al arreglo carrito
+            articulosCarrito = [...articulosCarrito, infoCurso];
+    }
+
     // agregar elementos al arreglo de carrito
-    articulosCarrito = [...articulosCarrito, infoCurso];
+
     console.log(articulosCarrito);
     carritoHTML();
 }
